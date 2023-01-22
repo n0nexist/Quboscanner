@@ -1,6 +1,14 @@
 ## Quboscanner (fork by n0nexist)
 ![alt-text](https://github.com/n0nexist/Quboscanner/blob/main/screenshot.png?raw=true)<br>
 
+## Features
+<ul>
+<li>colors</li>
+<li>lightweight (+no gui)</li>
+<li>better status printing</li>
+<li><i>TODO:</i> join bot checker (ipwhitelist/bungeeguard)</li>
+</ul>
+
 ## Download
 
 You can download Quboscaner in the [releases page](https://github.com/replydev/Quboscanner/releases/) \
