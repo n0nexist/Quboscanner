@@ -1,8 +1,6 @@
-# Quboscanner (fork by n0nexist)
-<i>www.n0nexist.gq</i>
+## Quboscanner (fork by n0nexist)
+![alt-text](https://github.com/n0nexist/Quboscanner/blob/main/screenshot.png?raw=true)<br>
 
-
-# Original readme:
 ## Download
 
 You can download Quboscaner in the [releases page](https://github.com/replydev/Quboscanner/releases/) \
