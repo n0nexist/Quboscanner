@@ -8,7 +8,7 @@ public class KeyboardThread implements Runnable {
     public void run() {
         while(true){
             try{
-                System.out.print("\033[31m[\033[0mTHREADS: \033[33m"+CLI.getQuboInstance().getThreads()+"\033[31m]-[\033[0mCHECKING: \033[33m"+CLI.getQuboInstance().getCurrent()+"\033[31m]\r");
+                System.out.print("\033[31m[\033[0mTHREADS: \033[33m"+CLI.getQuboInstance().getThreads()+"\033[31m]-[\033[0mCURRENT: \033[33m"+CLI.getQuboInstance().getCurrent()+"\033[31m]\r");
             }catch(Exception a){}
         }
     }

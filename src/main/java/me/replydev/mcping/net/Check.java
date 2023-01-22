@@ -65,6 +65,26 @@ public class Check implements Runnable{
                                 "Ping time: " + (System.currentTimeMillis() - time) + " ms";
                         String formattedline = "\033[31m(\033[0m" + hostname + ":" + port + "\033[31m)(\033[0m" + response.getPlayers().getOnline() + "/" + response.getPlayers().getMax() + "\033[31m)" + "(\033[0m" + response.getVersion().getName() + "\033[31m)" + "(\033[0m" + des + "\033[31m)\033[0m";
                         String singleLine = "(" + hostname + ":" + port + ")(" + response.getPlayers().getOnline() + "/" + response.getPlayers().getMax() + ")(" + response.getVersion().getName() + ")(" + des + ")";
+                        /* bot checker */
+                        MinecraftServer minecraftServer = new MinecraftServer(
+                            hostname,
+                            port,
+                            Protocolz.getProtocol(response.getVersion().getName())
+                        );
+                        String result = "";
+                        try {
+                            minecraftServer.connect();
+                            minecraftServer.sendHandshakePacket();
+                            minecraftServer.sendLoginStartPacket();
+                            result = minecraftServer.check();
+                            Thread.sleep(1000L);
+                            minecraftServer.disconnect();
+                        } catch (Exception e) {
+                            result = "\033[0;37mFAILED\033[0m";
+                        } 
+                        formattedline+="\033[31m(\033[0m"+result+"\033[31m)\033[0m";
+                        singleLine+="("+result+")";
+                        /* fine bot checker */
                         Info.serverFound++;
                         Info.serverNotFilteredFound++;
                         Log.logln(formattedline);

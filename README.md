@@ -6,7 +6,7 @@
 <li>colors</li>
 <li>lightweight (+no gui)</li>
 <li>better status printing</li>
-<li><i>TODO:</i> join bot checker (ipwhitelist/bungeeguard)</li>
+<li>join bot checker (ipwhitelist/bungeeguard/ecc..)</li>
 </ul>
 
 ## Download
