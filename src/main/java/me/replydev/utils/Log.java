@@ -16,7 +16,7 @@ public class Log {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ITALIAN);
         LocalTime time = LocalTime.now();
         String f = formatter.format(time);
-        System.out.print("[" + f + "] - " + s);
+        System.out.print("\u001b[33m[\u001b[0m" + f + "\u001b[33m]\u001b[0m  - " + s);
     }
 
     public static void log_to_file(String s,String filename){

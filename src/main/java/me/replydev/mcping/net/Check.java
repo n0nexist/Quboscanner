@@ -6,8 +6,8 @@ import me.replydev.mcping.PingOptions;
 import me.replydev.mcping.data.FinalResponse;
 import me.replydev.qubo.Info;
 import me.replydev.qubo.QuboInstance;
-import me.replydev.qubo.gui.MainWindow;
 import me.replydev.utils.FileUtils;
+import me.replydev.utils.Log;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -63,14 +63,11 @@ public class Check implements Runnable{
                                 "Online: " + response.getPlayers().getOnline() + "/" + response.getPlayers().getMax() + "\n" +
                                 "MOTD: " + des + "\n" +
                                 "Ping time: " + (System.currentTimeMillis() - time) + " ms";
-                        String singleLine = "(" + hostname + ":" + port + ")(" + response.getPlayers().getOnline() + "/" + response.getPlayers().getMax() + ")" + "(" + response.getVersion().getName() + ")" + "(" + des + ")";
+                        String formattedline = "\033[31m(\033[0m" + hostname + ":" + port + "\033[31m)(\033[0m" + response.getPlayers().getOnline() + "/" + response.getPlayers().getMax() + "\033[31m)" + "(\033[0m" + response.getVersion().getName() + "\033[31m)" + "(\033[0m" + des + "\033[31m)\033[0m";
+                        String singleLine = "(" + hostname + ":" + port + ")(" + response.getPlayers().getOnline() + "/" + response.getPlayers().getMax() + ")(" + response.getVersion().getName() + ")(" + des + ")";
                         Info.serverFound++;
                         Info.serverNotFilteredFound++;
-                        if(Info.gui) 
-                        {
-                        	MainWindow.dtm.addRow(new Object[]{ Info.serverFound, hostname, port, response.getPlayers().getOnline() + "/" + response.getPlayers().getMax(), response.getVersion().getName(),des });
-                        }
-                        else System.out.println(singleLine);
+                        Log.logln(formattedline);
                         
                         if(quboInstance.inputData.isOutput() && Files.exists(Paths.get(filename)))
                         {

@@ -35,6 +35,7 @@ public class LegacyPinger {
         socket.setSoTimeout(this.timeout);
         socket.connect(this.host, this.timeout);
         sendPing(new DataOutputStream(socket.getOutputStream()));
+        socket.close(); // the socked was never closed in the original version...
         return readResponse(new DataInputStream(socket.getInputStream()));
     }
 

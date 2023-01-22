@@ -28,10 +28,10 @@ public class InputData{
 
     private Options buildOptions()
     {
-        Option iprange = new Option("range","iprange",true,"The IP range that me.replydev.qubo will scan");
+        Option iprange = new Option("range","iprange",true,"The IP range that www.n0nexist.gqwill scan");
         iprange.setRequired(true);
 
-        Option portrange = new Option("ports","portrange",true,"The range of ports that me.replydev.qubo will work on");
+        Option portrange = new Option("ports","portrange",true,"The range of ports that www.n0nexist.gqwill work on");
         portrange.setRequired(true);
 
         Option threads = new Option("th","threads",true,"Maximum number of running async threads");
@@ -40,7 +40,7 @@ public class InputData{
         Option timeout = new Option("ti","timeout",true,"Server Ping timeout");
         timeout.setRequired(true);
 
-        Option count = new Option("c","pingcount",true,"How many times me.replydev.qubo will ping a server");
+        Option count = new Option("c","pingcount",true,"How many times www.n0nexist.gqwill ping a server");
         count.setRequired(false);
 
         Option noping = new Option("noping",false,"Prevent Qubo from pinging IPs before start scan");

@@ -3,7 +3,6 @@ package me.replydev.qubo;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -12,7 +11,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import me.replydev.mcping.net.Check;
 import me.replydev.mcping.net.SimplePing;
-import me.replydev.utils.FileUtils;
 import me.replydev.utils.Log;
 
 public class QuboInstance 
@@ -39,19 +37,12 @@ public class QuboInstance
 		}
 		if (this.inputData.getPortrange().size() < 1500)
 		{
-			Log.logln("Skipping the initial ping due to the few ports inserted");
 			this.inputData.setPing(false);
 		}
 	}
 
 	public void run() 
 	{
-		start = ZonedDateTime.now();
-		///ZonedDateTime start = ZonedDateTime.now();
-		if (inputData.isOutput()) 
-		{
-			FileUtils.appendToFile("Scanner started on: " + start.format(DateTimeFormatter.RFC_1123_DATE_TIME),inputData.getFilename());
-		}
 		try
 		{
 			checkServersExecutor();
@@ -60,18 +51,13 @@ public class QuboInstance
 		{
 			Log.log_to_file(e.toString(), "log.txt");
 		}
-		ZonedDateTime end = ZonedDateTime.now();
-		if (inputData.isOutput())
-			FileUtils.appendToFile(
-					"Scanner ended on: " + end.format(DateTimeFormatter.RFC_1123_DATE_TIME),
-					inputData.getFilename());
-		Log.logln(getScanTime(start,end));
+		
 
 	}
 
 	private void checkServersExecutor() throws InterruptedException,NumberFormatException {
 		ExecutorService checkService = Executors.newFixedThreadPool(inputData.getThreads());
-		Log.logln("Checking Servers...");
+		Log.logln("Scanning...");
 
 		while (inputData.getIpList().hasNext()) 
 		{
@@ -123,7 +109,7 @@ public class QuboInstance
 
 	public String getCurrent() 
 	{
-		return "Current ip: " + ip + ":" + port + " - (" + String.format("%.2f", getPercentage()) + "%)";
+		return "\033[0m"+ip + ":" + port + " - \033[33m" + String.format("%.2f", getPercentage()) + "%";
 	}
 
 	public int getThreads() 
@@ -169,41 +155,4 @@ public class QuboInstance
 		return bytes[bytes.length - 1] == 0 || bytes[bytes.length - 1] == (byte) 0xFF;
 	}
 
-	public ZonedDateTime getStartTime(){ return this.start; }
-
-	public String getScanTime(ZonedDateTime start){
-		return getScanTime(start,ZonedDateTime.now());
-	}
-
-	public String getScanTime(ZonedDateTime start, ZonedDateTime end){
-		ZonedDateTime tempDateTime = ZonedDateTime.from( start );
-
-		long years = tempDateTime.until( end, ChronoUnit.YEARS );
-		tempDateTime = tempDateTime.plusYears( years );
-
-		long months = tempDateTime.until( end, ChronoUnit.MONTHS );
-		tempDateTime = tempDateTime.plusMonths( months );
-
-		long days = tempDateTime.until( end, ChronoUnit.DAYS );
-		tempDateTime = tempDateTime.plusDays( days );
-
-
-		long hours = tempDateTime.until( end, ChronoUnit.HOURS );
-		tempDateTime = tempDateTime.plusHours( hours );
-
-		long minutes = tempDateTime.until( end, ChronoUnit.MINUTES );
-		tempDateTime = tempDateTime.plusMinutes( minutes );
-
-		long seconds = tempDateTime.until( end, ChronoUnit.SECONDS );
-
-		StringBuilder builder = new StringBuilder();
-		if(seconds != 0) builder.append(seconds).append(" seconds");
-		if(minutes != 0) builder.insert(0,minutes + " minutes, ");
-		if(hours != 0) builder.insert(0,minutes + " hours, ");
-		if(days != 0) builder.insert(0,minutes + " days, ");
-		if(months != 0) builder.insert(0,minutes + " months, ");
-		if(years != 0) builder.insert(0,minutes + " years, ");
-		builder.insert(0,"Scan time: ");
-		return builder.toString();
-	}
 }
