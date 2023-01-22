@@ -4,10 +4,15 @@
 ## Features
 <ul>
 <li>colors</li>
-<li>lightweight (+no gui)</li>
+<li>lightweight</li>
 <li>better status printing</li>
 <li>join bot checker (ipwhitelist/bungeeguard/ecc..)</li>
 </ul>
+
+## Save outputs to file
+```
+$ java [...] qubo.jar [command] | tee output.txt
+```
 
 ## Download
 (<a href="https://github.com/n0nexist/Quboscanner/releases/latest">Download link</a>) click on qubo.jar and the download should start.
