@@ -7,6 +7,7 @@
 <li>lightweight</li>
 <li>better status printing</li>
 <li>join bot checker (ipwhitelist/bungeeguard/ecc..)</li>
+<li>-rangefile option (to scan multiple ranges at once)</li>
 </ul>
 
 ## Save outputs to file
