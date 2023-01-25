@@ -8,12 +8,13 @@
 <li>better status printing</li>
 <li>join bot checker (ipwhitelist/bungeeguard/ecc..)</li>
 <li>-rangefile option (to scan multiple ranges at once)</li>
+<li>latest version checker (to always have the newest features)</li>
 </ul>
 
-## Save outputs to file
-```
-$ java [...] qubo.jar [command] | tee output.txt
-```
+## Requirements
+<ul>
+<li><a href="https://www.google.com/search?q=how+to+install+java+11">Java 11</a></li>
+</ul>
 
 ## Download
 (<a href="https://github.com/n0nexist/Quboscanner/releases/latest">Download link</a>) click on qubo.jar and the download should start.
