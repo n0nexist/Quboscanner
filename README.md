@@ -7,7 +7,8 @@
 <li>lightweight</li>
 <li>better status printing</li>
 <li>join bot checker (ipwhitelist/bungeeguard/ecc..)</li>
-<li>-rangefile option (to scan multiple ranges at once)</li>
+<li>ability to scan multiple ranges with one command</li>
+<li>ability to save results in a given file/directory name</li>
 </ul>
 
 ## Requirements
