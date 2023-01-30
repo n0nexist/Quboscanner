@@ -150,7 +150,7 @@ public class MinecraftServer {
         result = "\033[32mCONNECTED\033[0m";
         return result;
       case 3:
-        result = "\033[32mCONNECTED \033[36m=>\033[32m probably bungeehack\033[0m";
+        result = "\033[32mCONNECTED \033[36m=>\033[32m IPFORWARDING\033[0m";
         return result;
     } 
     result = "\033[34mUnknown [probably velocity] (" + id + ")\033[0m";
